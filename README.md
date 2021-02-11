@@ -80,6 +80,17 @@ vc --confirm
 
 Todo
 
+## Deployment of API to Vercel from scratch
+
+1) Create an instance of MongoDB. You can use https://www.mongodb.com/cloud.
+2) Create an account at https://vercel.com and create a deployment unit (basically, configure API host)
+3) Create `mongodb_uri` secret at vercel (use uri from step #1):
+`vc secrets add mongodb_uri mongodb://...`
+4) Update [now.json](./now.json#L6) file. Change `scope`, `alias` and `env.BASE_URL` using data from vercel account
+5) Deploy API to vercel (run in terminal): `vc --confirm`
+6) Update [nuxt.config.js](./nuxt.config.js#L293). Change `env.API_URL` to the vercel API host
+7) Run UI locally and verify it works with the remote API
+
 ## Related
 
 - [b5-johnson-120-ipip-neo-pi-r](https://github.com/Alheimsins/b5-johnson-120-ipip-neo-pi-r) - Module for returning Big Five [Johnson 120 IPIP-NEO-PI-R](http://ipip.ori.org/30FacetNEO-PI-RItems.htm) items
